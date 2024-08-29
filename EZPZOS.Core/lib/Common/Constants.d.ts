@@ -21,7 +21,7 @@ export declare const DefaultOTPVerificationValues: {
 };
 export declare const DefaultJWTSecretKey = "7575922d869d79166c8b9e113ae0dc03b146a1c622f9bb5fdd9021d1901604be";
 export declare const JWTLoginTokenExpiringPeriod = "1d";
-export declare const JWTOTPTokenExpiringPeriod = 300;
+export declare const OTPTokenExpiringPeriod = 300;
 export declare const DefaultPortNumber = 8000;
 export declare const DefaultMenuRoutesValues: {
     DineInDefaultValue: string;
@@ -79,6 +79,15 @@ export declare const DefaultLoginSignupValues: {
             409: string;
             422: string;
             500: string;
+            default: string;
+        };
+    };
+    MobileLoginDefaultValue: {
+        LoginSuccessMessage: string;
+        LoginErrorMessage: {
+            401: string;
+            403: string;
+            404: string;
             default: string;
         };
     };
@@ -147,4 +156,25 @@ export declare const DefaultBookConfirmationValues: {
     ReceiveText: string;
     BtnText: string;
     PhonePlaceHolder: string;
+};
+export declare const DefaultMenuCreateValues: {
+    Labels: {
+        DishName: string;
+        DishDescription: string;
+        DishPrice: string;
+        Category: string;
+        Tags: string;
+        IsDishAvailable: string;
+        UploadImage: string;
+        OrText: string;
+        InsertButton: string;
+        CancelButton: string;
+        AddNewButton: string;
+        AddTagButton: string;
+        NoImageSelected: string;
+        ImagePreview: string;
+    };
+    Messages: {
+        ValidationError: string;
+    };
 };

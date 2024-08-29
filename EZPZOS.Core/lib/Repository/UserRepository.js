@@ -11,6 +11,7 @@ var _BaseRepository2 = require("./BaseRepository");
 var _mssql = require("mssql");
 var _UserRoleRepository = require("./UserRoleRepository");
 var _PrepareStatementHandler = require("../Handler/PrepareStatementHandler");
+var _SqlError = require("../Domain/SqlError");
 function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
@@ -309,19 +310,22 @@ var UserRepository = exports.UserRepository = /*#__PURE__*/function (_BaseReposi
                 return preparedStatement.input("Mobile", _mssql.NVarChar);
               }, /*#__PURE__*/function () {
                 var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(err, result) {
-                  var user;
+                  var errorCode, errorMessage, user;
                   return _regeneratorRuntime().wrap(function _callee6$(_context6) {
                     while (1) switch (_context6.prev = _context6.next) {
                       case 0:
-                        if (err) {
+                        if (err instanceof _SqlError.SqlError) {
                           _this5.Logger.Log("GetUserByMobile", "Error Getting User By Mobile: ".concat(mobile, "\n\t\t\t\t\t\t\tException: ").concat(JSON.stringify(err)), _Constants.LogLevel.ERROR);
+                          errorCode = err.number;
+                          errorMessage = err.message;
+                          callback(false, null, errorCode, errorMessage);
                         } else if ((result === null || result === void 0 ? void 0 : result.rowsAffected[0]) === 1 && result.recordsets[0].length > 0) {
                           _this5.Logger.Log("GetUserByMobile", "User found.", _Constants.LogLevel.DEBUG);
                           user = result.recordsets[0][0];
                           callback(true, user);
                         } else {
                           _this5.Logger.Log("GetUserByMobile", "User not found.", _Constants.LogLevel.WARN);
-                          callback(false, null);
+                          callback(false, null, 404, "User not found");
                         }
                       case 1:
                       case "end":

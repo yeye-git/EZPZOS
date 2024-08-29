@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Platform = exports.LogLevelToString = exports.LogLevel = exports.LogFilePath = exports.LogFileName = exports.JWTOTPTokenExpiringPeriod = exports.JWTLoginTokenExpiringPeriod = exports.GOOGLE_MAPS_API_KEY = exports.DefaultTargetLogLevel = exports.DefaultSideBarContent = exports.DefaultRestaurantDetails = exports.DefaultPortNumber = exports.DefaultPastOrderContent = exports.DefaultOTPVerificationValues = exports.DefaultMenuRoutesValues = exports.DefaultLoginSignupValues = exports.DefaultJWTSecretKey = exports.DefaultHotSaleValues = exports.DefaultHomePageValues = exports.DefaultBookConfirmationValues = exports.ClientHomePageValues = exports.BusinessHomePageValues = exports.BooleanTrueString = exports.BooleanFalseString = void 0;
+exports.Platform = exports.OTPTokenExpiringPeriod = exports.LogLevelToString = exports.LogLevel = exports.LogFilePath = exports.LogFileName = exports.JWTLoginTokenExpiringPeriod = exports.GOOGLE_MAPS_API_KEY = exports.DefaultTargetLogLevel = exports.DefaultSideBarContent = exports.DefaultRestaurantDetails = exports.DefaultPortNumber = exports.DefaultPastOrderContent = exports.DefaultOTPVerificationValues = exports.DefaultMenuRoutesValues = exports.DefaultMenuCreateValues = exports.DefaultLoginSignupValues = exports.DefaultJWTSecretKey = exports.DefaultHotSaleValues = exports.DefaultHomePageValues = exports.DefaultBookConfirmationValues = exports.ClientHomePageValues = exports.BusinessHomePageValues = exports.BooleanTrueString = exports.BooleanFalseString = void 0;
 var LogLevel = exports.LogLevel = {
   ERROR: 0,
   WARN: 1,
@@ -29,14 +29,14 @@ var BooleanFalseString = exports.BooleanFalseString = "false";
 //OTP config
 var DefaultOTPVerificationValues = exports.DefaultOTPVerificationValues = {
   AccountSidDefaultValue: "AC6bc69eb11d33e94e6fdd65afaddb7712",
-  AuthTokenDefaultValue: "07346e78db30810787edbf5ba205fb05",
+  AuthTokenDefaultValue: "c9c7dda314a8728bce5d7fd4300bcb7f",
   ServiceSidDefaultValue: "VA314606b18caa89923e4c2933ee5ef4cf"
 };
 
 //JWT config
 var DefaultJWTSecretKey = exports.DefaultJWTSecretKey = "7575922d869d79166c8b9e113ae0dc03b146a1c622f9bb5fdd9021d1901604be";
 var JWTLoginTokenExpiringPeriod = exports.JWTLoginTokenExpiringPeriod = "1d";
-var JWTOTPTokenExpiringPeriod = exports.JWTOTPTokenExpiringPeriod = 300; //(5m) set it in seconds for calculation in OTP
+var OTPTokenExpiringPeriod = exports.OTPTokenExpiringPeriod = 300; //(5m) set it in seconds for calculation in OTP
 
 //default port number
 var DefaultPortNumber = exports.DefaultPortNumber = 8000;
@@ -101,6 +101,15 @@ var DefaultLoginSignupValues = exports.DefaultLoginSignupValues = {
       409: "User already existed.",
       422: "Missing required fields for user creation.",
       500: "Server error. Please try again.",
+      "default": "An error occurred. Please try again."
+    }
+  },
+  MobileLoginDefaultValue: {
+    LoginSuccessMessage: "Login successfully.",
+    LoginErrorMessage: {
+      401: "Unauthorized. Please try again.",
+      403: "Token has expired.",
+      404: "User is not found.",
       "default": "An error occurred. Please try again."
     }
   }
@@ -203,4 +212,27 @@ var DefaultBookConfirmationValues = exports.DefaultBookConfirmationValues = {
   "ReceiveText": "Receive restaurant offer",
   "BtnText": "Continue",
   "PhonePlaceHolder": "Phone number"
+};
+
+// MenuCreate Naming, change everything here if needed
+var DefaultMenuCreateValues = exports.DefaultMenuCreateValues = {
+  Labels: {
+    DishName: 'Dish Name*',
+    DishDescription: 'Dish Description*',
+    DishPrice: 'Dish Price*',
+    Category: 'Category*',
+    Tags: 'Tags',
+    IsDishAvailable: 'Is this dish available?',
+    UploadImage: 'Upload Image',
+    OrText: 'OR',
+    InsertButton: 'Insert',
+    CancelButton: 'Cancel',
+    AddNewButton: 'Add New',
+    AddTagButton: 'Add Tag',
+    NoImageSelected: 'No image selected',
+    ImagePreview: 'Image Preview'
+  },
+  Messages: {
+    ValidationError: "Please fill out all required fields."
+  }
 };

@@ -20,7 +20,7 @@ export declare class UserRepository extends BaseRepository implements IRepositor
      * @param callback Result returned from the query. Parameter {result} indicating if the call succeed or otherwise. Parameter {user} represents the User object or undefined if result is false.
      * @returns void
      */
-    GetUserByMobile(mobile: string, callback: (result: boolean, user: User | null | undefined) => void): Promise<void>;
+    GetUserByMobile(mobile: string, callback: (result: boolean, user: User | null | undefined, errorCode?: number, errorMessage?: string) => void): Promise<void>;
     OnSaving(dataObject: IDataObject, userId: string, isUpdate: boolean, isDelete: boolean, callback: (result: boolean) => void): Promise<void>;
     OnSaved(dataObject: IDataObject, userId: string, isUpdate: boolean, isDelete: boolean, callback: (result: boolean, errorCode?: number, errorMessage?: string) => void): Promise<void>;
 }

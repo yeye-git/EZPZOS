@@ -13,8 +13,8 @@ COPY EZPZOS.Core /app/EZPZOS.Core
 RUN ls -l /app
 
 # Install dependencies
-RUN cd /app/EZPZOS.Core && npm install && npm run build
-RUN cd /app/EZPZOS.Web && npm install && npm install Buffer --save && npm install buffer && npm run build
+RUN cd /app/EZPZOS.Core && npm install && npm run build && \ 
+cd /app/EZPZOS.Web && npm install && npm install Buffer --save && npm install buffer && npm run build
 RUN cp -a /app/EZPZOS.Web/* /app/
 RUN ls -l /app/node_modules
 

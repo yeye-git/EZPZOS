@@ -12,3 +12,16 @@ export declare const BookConfirmInfo: {
     PeopleNum: string;
     Introdution: string;
 };
+export interface Cuisine {
+    Id: number;
+    Name: string;
+    Amount: number;
+    DineType: string;
+    Price: number;
+    ImageUrl: string;
+}
+export declare const ClientCartDemoData: Cuisine[];
+export declare const DemoVoucher: {
+    Number: string;
+    Value: number;
+};

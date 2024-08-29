@@ -37,7 +37,6 @@ module.exports = {
 		fallback: {
 			url: require.resolve("url"),
 			fs: require.resolve("graceful-fs"),
-			buffer: require.resolve("buffer"),
 			timers: require.resolve("timers"),
 			events: false,
 			"node:stream": require.resolve("node:stream"),
