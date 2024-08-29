@@ -40,7 +40,7 @@ pipeline {
                 dir('EZPZOS.Web') {
                     sh 'npm install'
                     // sh 'npm install buffer'
-                    sh 'npm install Buffer --save'
+                    // sh 'npm install Buffer --save'
                     sh 'npm run build'
                     echo 'Build Web success'
                     sh 'ls -la dist/'
