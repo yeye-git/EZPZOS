@@ -39,6 +39,7 @@ pipeline {
             steps {
                 dir('EZPZOS.Web') {
                     sh 'npm install'
+                    sh 'npm install Buffer'
                     sh 'npm run build'
                     echo 'Build Web success'
                     sh 'ls -la dist/'
@@ -90,12 +91,6 @@ pipeline {
                     echo 'Push Docker image to ECR success'
                 }
             }
-        }
-
-       
-
-      
-
-       
+        }       
     }
 } 
