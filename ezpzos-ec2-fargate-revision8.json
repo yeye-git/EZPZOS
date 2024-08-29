@@ -16,7 +16,7 @@
             ],
             "essential": true,
             "healthCheck": {
-                "command":  [ "CMD-SHELL", "curl -f http://localhost:8000 || exit 1" ],
+                "command":  [ "CMD-SHELL", "curl -f http://3.27.71.214:8000 || exit 1" ],
                 "interval": 30,
                 "timeout": 5,
                 "retries": 3,
