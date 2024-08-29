@@ -26,6 +26,9 @@ pipeline {
             steps {
                 dir('EZPZOS.Core') {
                     sh 'npm install'
+                    sh 'chmod +x ./node_modules/.bin/rimraf'
+                    sh 'chmod +x ./node_modules/.bin/tsc'
+                    sh 'chmod +x ./node_modules/.bin/babel'
                     sh 'npm run build'
                     echo 'Build core success'
                 }
