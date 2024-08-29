@@ -1,0 +1,4 @@
+{
+	"presets": ["@babel/preset-env", "@babel/preset-typescript"],
+	"ignore": ["Repository/*", "Handler/LogHandler.ts", "Handler/PrepareStatementHandler.ts"]
+}

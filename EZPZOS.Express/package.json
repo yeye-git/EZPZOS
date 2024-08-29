@@ -1,0 +1,52 @@
+{
+  "name": "be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "jest",
+    "build": "rimraf dist && babel src --out-dir dist --copy-files --ignore src/**/*.test.ts",
+    "prestart": "npm run build",
+    "start": "npx ts-node dist/server.ts",
+    "preserve": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/preset-env": "^7.24.4",
+    "@types/ezpzos.core": "file:../EZPZOS.Core",
+    "@types/mssql": "^9.1.5",
+    "@types/node": "^20.14.10",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "ezpzos.core": "file:../EZPZOS.Core",
+    "jsonwebtoken": "^9.0.2",
+    "mssql": "^11.0.1",
+    "rimraf": "^5.0.8",
+    "ts-node": "^10.9.2",
+    "twilio": "^5.2.2",
+    "typescript": "^5.5.3",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/supertest": "^6.0.2",
+    "@types/uuid": "^10.0.0",
+    "babel-cli": "^6.26.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.2"
+  }
+}
