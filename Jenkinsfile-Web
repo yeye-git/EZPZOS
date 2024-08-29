@@ -9,7 +9,7 @@ pipeline {
         ECR_REPO_NAME = 'ezpzos-web'
         SERVICE_NAME = 'ezpzos'
         ECR_REPO = '975049907995.dkr.ecr.ap-southeast-2.amazonaws.com'
-        IMAGE_TAG = '2.0'
+        IMAGE_TAG = '1.0'
     }
     tools {
         nodejs 'NodeJS 22.6.0'
