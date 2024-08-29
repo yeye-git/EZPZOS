@@ -1,7 +1,7 @@
 pipeline {
     agent any
     triggers {
-        githubPush() // 监听 GitHub Push 事件
+        githubPush() 
     }
     environment {
         AWS_ACCOUNT_ID = '975049907995'
@@ -94,5 +94,5 @@ pipeline {
       
 
        
-    } // 关闭 stages 块
-} // 关闭 pipeline 块
+    }
+} 

@@ -2,7 +2,7 @@
 pipeline {
     agent any
     triggers {
-        githubPush() // 监听 GitHub Push 事件
+        githubPush() 
     }
     environment {
         AWS_ACCOUNT_ID = '975049907995'
@@ -33,8 +33,8 @@ pipeline {
         stage('Build EZPZOS.Core') {
             steps {
                 dir('EZPZOS.Core') {
-                    // sh 'npm install'
-                    sh 'npm install --unsafe-perm '
+                    sh 'npm install'
+                    // sh 'npm install --unsafe-perm '
                     sh 'chmod +x ./node_modules/.bin/rimraf'
                     sh 'chmod +x ./node_modules/.bin/tsc'
                     sh 'chmod +x ./node_modules/.bin/babel'
@@ -45,24 +45,11 @@ pipeline {
         }
 
 
-        //   stage('Set Permissions') {
-        //     steps {
-        //         script{
-        //         // 確保 rimraf, tsc, babel 具有可執行權限
-        //         sh 'chmod +x ./node_modules/.bin/rimraf'
-        //         sh 'chmod +x ./node_modules/.bin/tsc'
-        //         sh 'chmod +x ./node_modules/.bin/babel'
-        //         }
-        //     }
-        // }
-
-
-
         stage('Build EZPZOS.Express') {
             steps {
                 dir('EZPZOS.Express') {
-                    // sh 'npm install'
-                    sh 'npm install --unsafe-perm '
+                    sh 'npm install'
+                    // sh 'npm install --unsafe-perm '
                     sh 'npm run build'
                     echo 'Build Express success'
                     sh 'ls -la dist/'
@@ -183,5 +170,5 @@ pipeline {
                 }
             }
         }
-    } // 关闭 stages 块
-} // 关闭 pipeline 块
+    } 
+} 
