@@ -21,6 +21,15 @@
                 "timeout": 5,
                 "retries": 3,
                 "startPeriod": 60
+            },
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/ezpzos-express",
+                    "awslogs-region": "ap-southeast-2",
+                    "awslogs-stream-prefix": "ecs",
+                    "awslogs-create-group": "true"
+                }
             }
         }
     ],
