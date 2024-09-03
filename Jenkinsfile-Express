@@ -5,7 +5,7 @@ pipeline {
         githubPush() 
     }
     environment {
-        AWS_ACCOUNT_ID = '975049907995'
+        AWS_ACCOUNT_ID = '396608773759'
         AWS_REGION = 'ap-southeast-2'
         ECR_REPO_NAME = 'ezpzos-express'
         CLUSTER_NAME = 'ezpzos-fargate-cluster'
