@@ -15,7 +15,7 @@ pipeline {
         IMAGE_TAG = '2.0'
     }
     tools {
-        nodejs 'NodeJS 22.6.0'
+        NodeJS 'NodeJS 22.6.0'
     }
 
    
