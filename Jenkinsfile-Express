@@ -20,7 +20,7 @@ pipeline {
         nodejs 'NodeJS 22.6.0'
     }
 
-   
+    
 
     stages {
         stage('Checkout EZPZOS.Core') {
