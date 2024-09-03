@@ -7,6 +7,8 @@ pipeline {
     environment {
         AWS_ACCOUNT_ID = '396608773759'
         AWS_REGION = 'ap-southeast-2'
+        AWS_ACCESS_KEY_ID = 'AKIAVYV5ZTZ7VDQYNZMS'
+        AWS_SECRET_ACCESS_KEY = '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'
         ECR_REPO_NAME = 'ezpzos-express'
         CLUSTER_NAME = 'ezpzos-fargate-cluster'
         SERVICE_NAME = 'ezpzos'
