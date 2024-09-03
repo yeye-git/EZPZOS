@@ -12,7 +12,7 @@ pipeline {
         SERVICE_NAME = 'ezpzos'
         TASK_FAMILY = 'ezpzos-ec2-fargate'
         ECR_REPO = '396608773759.dkr.ecr.ap-southeast-2.amazonaws.com'
-        IMAGE_TAG = '2.0'
+        IMAGE_TAG = 'latest'
     }
     tools {
         nodejs 'NodeJS 22.6.0'
