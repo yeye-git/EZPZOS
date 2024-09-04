@@ -5,13 +5,13 @@ pipeline {
         githubPush() 
     }
     environment {
-        AWS_ACCOUNT_ID = '396608773759'
+        AWS_ACCOUNT_ID = '897244716306'
         AWS_REGION = 'ap-southeast-2'
         ECR_REPO_NAME = 'ezpzos-express'
         CLUSTER_NAME = 'ezpzos-fargate-cluster'
         SERVICE_NAME = 'ezpzos'
         TASK_FAMILY = 'ezpzos-ec2-fargate'
-        ECR_REPO = '396608773759.dkr.ecr.ap-southeast-2.amazonaws.com'
+        ECR_REPO = '897244716306.dkr.ecr.ap-southeast-2.amazonaws.com'
         IMAGE_TAG = 'latest'
     }
     tools {
@@ -78,7 +78,7 @@ pipeline {
                         credentialsId: 'AWS'
                     ]]) {
                         sh '''
-                             ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
+                            /bin/aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
                         '''
                     }
                     echo 'ECR login success'
