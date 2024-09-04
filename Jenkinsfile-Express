@@ -78,7 +78,7 @@ pipeline {
                         credentialsId: 'AWS'
                     ]]) {
                         sh '''
-                            /var/jenkins_home/bin/aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
+                             ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
                         '''
                     }
                     echo 'ECR login success'
