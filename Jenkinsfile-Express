@@ -79,7 +79,7 @@ pipeline {
                     ]]) {
                         sh '''
                              export PATH=$PATH:/tmp/aws-cli-bin
-                             aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
+                             aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 897244716306.dkr.ecr.ap-southeast-2.amazonaws.com
                         '''
                     }
                     echo 'ECR login success'
