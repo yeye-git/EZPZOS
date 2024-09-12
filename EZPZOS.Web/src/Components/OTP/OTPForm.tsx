@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoCloseOutline } from "react-icons/io5";
-import { handleSendOTP, handleCompleteOTP } from "../../Services/OTPService";
+import { handleSendOTP, handleCompleteOTP } from "../../Services/PublicService";
 import { OTPType } from "ezpzos.core";
 
 interface OTPFormProps {

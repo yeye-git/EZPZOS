@@ -20,7 +20,6 @@ module.exports = {
 				lg: ["38px"]
 			},
 			fontFamily: {
-				sans: ["Lato", "sans-serif"],
 				sans: ["Istok Web", "sans-serif"],
 				lato: ["Lato", "sans-serif"]
 			}

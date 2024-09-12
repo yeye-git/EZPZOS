@@ -4,7 +4,7 @@ import { DefaultLoginSignupValues, LogHandler, LogLevel, OTPType } from "ezpzos.
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setMobileNumber, setOTPType } from "../../Store/AuthSlice";
-import { handleSendOTP } from "../../Services/OTPService";
+import { handleSendOTP } from "../../Services/PublicService";
 
 /**
  * This is the ContactForm component for user to login/signup

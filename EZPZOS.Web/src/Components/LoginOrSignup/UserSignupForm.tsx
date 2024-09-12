@@ -1,11 +1,11 @@
 import { DefaultLoginSignupValues, OTPType } from "ezpzos.core";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { login } from "../../Store/AuthSlice";
+import { login, setUser } from "../../Store/AuthSlice";
 import { RootState } from "../../Store/Store";
 import { useNavigate } from "react-router-dom";
 import { PhoneNumberNormalizer, LogHandler, LogLevel } from "ezpzos.core";
-import { AuthService } from "../../Services/AuthService";
+import { AuthService } from "../../Services/PublicService";
 import AlertTag from "../AlertTag";
 
 /**
@@ -42,10 +42,12 @@ const UserSignupForm: React.FC<UserSignupFormProps> = ({ otpToken, otpTarget }) 
 
 		const result = await AuthService.signupRequest(otpToken, username, email, normalizedMobile, otpTarget);
 
-		if (result.success && result.token) {
+		if (result.success && result.token && result.user) {
 			logger.Log("Signup", "Created user successfully", LogLevel.INFO);
 			// Dispatch the token to activate login state in Redux
-			dispatch(login(result.token)); 
+			dispatch(login({token: result.token, user: result.user})); 
+			// Dispatch user to save in Redux for frontend to use user info
+			dispatch(setUser(result.user))
 			setShowSuccess(true); // Show the success message
 			setTimeout(() => {
 				setShowSuccess(false);

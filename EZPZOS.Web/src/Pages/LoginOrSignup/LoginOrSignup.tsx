@@ -80,7 +80,7 @@ const LoginSignupPage: React.FC<LoginSignupDataProp> = ({ isLogin }) => {
 					<WelcomeMessage isLogin={isLogin} isOTPVerified={isOTPVerified} />
 
 					{/* This is ContactForm session, it contains input boxes for user to enter its phone number, or choose the google login. */}
-					{/* If isOTPVerified = true, users will be directed UserSignupForm to fill in more info for signup, otherwise will render ContactForm component */}
+					{/* If isOTPVerified = true, users will be directed to UserSignupForm to fill in more info for signup, otherwise will render ContactForm component */}
 					{/* UserSignupForm accepts two props: token and exp from jwt for authentication when submitting signup details */}
 					{isOTPVerified ? (
 						<UserSignupForm otpToken={otpToken} otpTarget={otpTarget} />

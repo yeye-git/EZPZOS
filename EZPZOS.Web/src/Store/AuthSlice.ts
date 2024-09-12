@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { OTPType } from "ezpzos.core";
+import { OTPType, User } from "ezpzos.core";
 
 interface AuthState {
 	isOTPVerified: boolean;
@@ -8,15 +8,20 @@ interface AuthState {
 	otpTarget: OTPType | null;
 	isLoggedIn: boolean;
 	authToken: string | null;
-};
+	user: User | null;
+}
+
+const savedUser = localStorage.getItem("user");
+const authToken = localStorage.getItem("authToken");
 
 const initialState: AuthState = {
 	isOTPVerified: false,
 	mobileNumber: null,
 	otpType: null,
 	otpTarget: null,
-	isLoggedIn: !!localStorage.getItem("authToken"), // Set to true if token exists in localStorage, false otherwise
-	authToken: localStorage.getItem("authToken") ?? null,
+	isLoggedIn: !!authToken,
+	authToken: authToken ?? null,
+	user: savedUser ? JSON.parse(savedUser) : null
 };
 
 const authSlice = createSlice({
@@ -35,24 +40,32 @@ const authSlice = createSlice({
 		setOTPTarget(state, action: PayloadAction<OTPType>) {
 			state.otpTarget = action.payload;
 		},
-		login(state, action: PayloadAction<string>) {
+		setUser(state, action: PayloadAction<User>) {
+			state.user = action.payload;
+		},
+		login(state, action: PayloadAction<{ token: string; user: User }>) {
 			// Put token inside localStorage and Redux, and set isLoggedIn to true
+			const { token, user } = action.payload;
 			state.isLoggedIn = true;
-			state.authToken = action.payload;
-			localStorage.setItem("authToken", action.payload);
+			state.authToken = token;
+			state.user = user;
+			localStorage.setItem("authToken", token);
+			localStorage.setItem("user", JSON.stringify(user)); // Save the user object as a string
 		},
 		logout(state) {
 			// Reset state on logout
 			localStorage.removeItem("authToken");
+			localStorage.removeItem("user");
 			state.isOTPVerified = false;
 			state.mobileNumber = null;
 			state.otpType = null;
 			state.otpTarget = null;
 			state.isLoggedIn = false;
-			state.authToken = null; 
+			state.authToken = null;
+			state.user = null;
 		}
 	}
 });
 
-export const { setOTPVerified, setMobileNumber, setOTPType, setOTPTarget, login, logout } = authSlice.actions;
+export const { setOTPVerified, setMobileNumber, setOTPType, setOTPTarget, setUser, login, logout } = authSlice.actions;
 export default authSlice.reducer;

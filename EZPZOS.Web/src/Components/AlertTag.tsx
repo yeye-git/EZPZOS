@@ -5,7 +5,18 @@ interface AlertTagProps {
 	isError?: boolean;
 }
 
-const AlertTag: React.FC<AlertTagProps> = ({ alertMessage, isError = false }) => {
+/**
+ * The `AlertTag` component is responsible for displaying alert messages in the application.
+ * It can show either a success or an error message, depending on the `isError` prop.
+ *
+ * @param alertMessage - The message to be displayed inside the alert. It can be a success or error message.
+ * @param isError - A boolean that determines the style of the alert. 
+ * If `true`, the alert is styled as an error with x icon and red-orange background. 
+ * If `false`, the alert is styled as a success with tick icon and green background. 
+ * The default value is `false` (success).
+ */
+
+const AlertTag: React.FC<AlertTagProps> = ({ alertMessage, isError = false  }) => {
 	return (
 		<div
 			className={

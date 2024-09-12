@@ -3,30 +3,32 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import QRScannerPage from "./Pages/QR/QRScannerPage";
 import Menu from "./Pages/Menu/Menu";
-import { DefaultMenuRoutesValues } from "ezpzos.core";
+import { DefaultRoutesValues } from "ezpzos.core";
 import Profile from "./Pages/Profile/Profile";
 import LoginSignupPage from "./Pages/LoginOrSignup/LoginOrSignup";
 import OTPPage from "./Pages/OTPPage/OTPPage";
 import BusinessHome from "./Pages/Kitchen/BusinessHome";
 import PastOrder from "./Pages/PastOrder/PastOrder";
 import MenuCreate from "./Pages/Menu/MenuCreate";
+import PersonalInfo from "./Pages/Profile/PersonalInfo";
 
 const AppRoutes: React.FC = () => (
 	<Routes>
 		<Route path="/" element={<Home />} />
-		<Route path="signup" element={<LoginSignupPage  isLogin={false}  />} />
-		<Route path="login" element={<LoginSignupPage isLogin={true} />} />
-		<Route path="otp" element={<OTPPage />} />
+		<Route path={DefaultRoutesValues.AuthRoutes.Signup} element={<LoginSignupPage  isLogin={false}  />} />
+		<Route path={DefaultRoutesValues.AuthRoutes.Login} element={<LoginSignupPage isLogin={true} />} />
+		<Route path={DefaultRoutesValues.AuthRoutes.OTP} element={<OTPPage />} />
 
-		<Route path="scan" element={<QRScannerPage />} />
-		<Route path={DefaultMenuRoutesValues.DineInRouteDefaultValue} element={<Menu />} />
-		<Route path={DefaultMenuRoutesValues.TakeAwayRouteDefaultValue} element={<Menu />} />
-		<Route path="profile" element={<Profile />} />
-		<Route path="pastorder" element={<PastOrder />} />
+		<Route path={DefaultRoutesValues.MenuRoutes.Scan} element={<QRScannerPage />} />
+		<Route path={DefaultRoutesValues.MenuRoutes.DineIn} element={<Menu />} />
+		<Route path={DefaultRoutesValues.MenuRoutes.TakeAway} element={<Menu />} />
+		<Route path={DefaultRoutesValues.UserRoutes.Profile} element={<Profile />} />
+		<Route path={DefaultRoutesValues.UserRoutes.UserInfo} element={<PersonalInfo />} />
+		<Route path={DefaultRoutesValues.UserRoutes.PastOrders} element={<PastOrder />} />
 
 		{/* Business Routes */}
-		<Route path="businesshome" element={<BusinessHome BusinessHomePageValues={{IsLoggedIn:true, HomePageButtonList:[],NotificationList:[]}}/>} />
-		<Route path="menucreate" element={<MenuCreate />} />
+		<Route path={DefaultRoutesValues.BusinessRoutes.Home} element={<BusinessHome BusinessHomePageValues={{IsLoggedIn:true, HomePageButtonList:[],NotificationList:[]}}/>} />
+		<Route path={DefaultRoutesValues.BusinessRoutes.CreateMenu} element={<MenuCreate />} />
 
 		
 	</Routes>

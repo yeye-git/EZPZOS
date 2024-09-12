@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../Store/Store";
-import { setOTPVerified, setOTPTarget, login } from "../../Store/AuthSlice";
+import { setOTPVerified, setOTPTarget, setUser, login } from "../../Store/AuthSlice";
 import { useNavigate } from "react-router-dom";
 import { LogLevel, LogHandler, DefaultLoginSignupValues, OTPType } from "ezpzos.core";
 import OTPForm from "../../Components/OTP/OTPForm";
 import AlertTag from "../../Components/AlertTag";
-import { AuthService } from "../../Services/AuthService";
+import { AuthService } from "../../Services/PublicService";
 
 const logger = new LogHandler("OTPPage.tsx");
 
@@ -32,15 +32,18 @@ const OTPPage: React.FC = () => {
 			// Try to call loginByMobileRequest
 			try {
 				const result = await AuthService.loginByMobileRequest(mobileNumber, otpToken, otpTarget);
-				if (result.success && result.token) {
+				if (result.success && result.token && result.user) {
 					// Dispatch the token to activate login state in Redux
-					dispatch(login(result.token)); 
+					dispatch(login({token: result.token, user: result.user})); 
+					// Dispatch user to save in Redux for frontend to use user info
+					dispatch(setUser(result.user));
+					console.log('User saved in Redux:', result.user);
 					// Show success message
 					logger.Log("OTP", "User Login successfully", LogLevel.INFO);
 					setShowSuccess(true);
 					setTimeout(() => {
 						setShowSuccess(false);
-						navigate("/"); // Navigate to home after the success message is hidden
+						navigate("/profile"); // Navigate to profile after the success message is hidden
 					}, 3000);
 				} else {
 					// Show error message

@@ -36,8 +36,8 @@ apiClient.interceptors.response.use(
 		return response;
 	},
 	error => {
-		// Check if the error is a 403 Forbidden
-		if (error.response?.status === 403) {
+		// Check if the error is a 401 Invalid Token or 403 Forbidden
+		if (error.response?.status === 401 || error.response?.status === 403) {
 			// Dispatch the logout action
 			store.dispatch(logout());
 			localStorage.removeItem("authToken");

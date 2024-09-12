@@ -7,11 +7,15 @@ import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
 
 /**
- * This is the component of top-navigator,including scanning,searching and sideBar list
+ * This is the component of top-navigator,including scanning,searching and sideBar list.
+ * @param hideSearch is the TopNavProps which as a boolean value for its parent component to control the display of the search function.
  * Sidebar is the child of this components so that topNav can control the visibility of it.
  */
+interface TopNavProps {
+  hideSearch?: boolean;
+}
 
-export default function TopNav() {
+export default function TopNav({ hideSearch = false }: TopNavProps) {
   //if sideBarVisible is true, sideBar can be seen,otherwise it is invisible.
   const [sideBarVisible, setSidebarVisible] = useState(false);
   const toogleSidebar = () => {
@@ -34,10 +38,12 @@ export default function TopNav() {
             onClick={toogleSidebar}
             style={{ display: sideBarVisible ? "none" : "block" }}
           />
-          <IoSearch
-            className="mr-3"
-            style={{ display: sideBarVisible ? "none" : "block" }}
-          />
+          {!hideSearch && (
+            <IoSearch
+              className="mr-3"
+              style={{ display: sideBarVisible ? "none" : "block" }}
+            />
+          )}
         </div>
       </div>
     </div>

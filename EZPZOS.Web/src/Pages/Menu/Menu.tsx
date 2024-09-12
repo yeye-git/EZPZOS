@@ -6,7 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TopPopUpToast from "../../Components/MenuList/TopPopUpToast";
 import MenuTab from "../../Components/MenuList/MenuTab";
-import { DefaultMenuRoutesValues, DefaultRestaurantDetails } from "ezpzos.core";
+import { DefaultRoutesValues, DefaultMenuRoutesValues, DefaultRestaurantDetails } from "ezpzos.core";
 import TopNav from "../../Components/TopNav";
 
 const Menu: React.FC = () => {
@@ -14,7 +14,7 @@ const Menu: React.FC = () => {
 	DefaultRestaurantDetails;
 	const navigate = useNavigate();
 	const [tableNumber, setTableNumber] = useState<string | null>(null);
-	const [selectedTab, setSelectedTab] = useState<string>(DefaultMenuRoutesValues.DineInDefaultValue);
+	const [selectedTab, setSelectedTab] = useState<string>(DefaultRoutesValues.MenuRoutes.DineIn);
 
 	//to extract the tablenumber from /scan page
 	useEffect(() => {
@@ -22,10 +22,10 @@ const Menu: React.FC = () => {
 		const tableNumber = params.get(DefaultMenuRoutesValues.TableNumberDefaultValue);
 		setTableNumber(tableNumber);
 
-		if (location.pathname.includes(DefaultMenuRoutesValues.DineInRouteDefaultValue)) {
+		if (location.pathname.includes(DefaultRoutesValues.MenuRoutes.DineIn)) {
 			setSelectedTab(DefaultMenuRoutesValues.DineInDefaultValue);
 			showToast(DefaultMenuRoutesValues.DineInToastDefaultValue);
-		} else if (location.pathname.includes(DefaultMenuRoutesValues.TakeAwayRouteDefaultValue)) {
+		} else if (location.pathname.includes(DefaultRoutesValues.MenuRoutes.TakeAway)) {
 			setSelectedTab(DefaultMenuRoutesValues.TakeAwayDefaultValue);
 			showToast(DefaultMenuRoutesValues.TakeAwayToastDefaultValue);
 		}
