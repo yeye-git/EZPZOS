@@ -4,11 +4,11 @@ pipeline {
         githubPush() 
     }
     environment {
-        AWS_ACCOUNT_ID = '975049907995'
+        AWS_ACCOUNT_ID = '897244716306'
         AWS_REGION = 'ap-southeast-2'
         ECR_REPO_NAME = 'ezpzos-web'
         SERVICE_NAME = 'ezpzos'
-        ECR_REPO = '975049907995.dkr.ecr.ap-southeast-2.amazonaws.com'
+        ECR_REPO = '897244716306.dkr.ecr.ap-southeast-2.amazonaws.com'
         IMAGE_TAG = 'latest'
     }
     tools {
