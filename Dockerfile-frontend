@@ -23,7 +23,7 @@ RUN ls -l /app/node_modules
 # COPY EZPZOS.Web/dist/ /app/dist/
 
 # Expose the application port
-EXPOSE 8081
+EXPOSE 3000
 
 # Command to run the application
 CMD ["npm", "start"]
