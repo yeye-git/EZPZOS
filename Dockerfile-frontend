@@ -19,6 +19,7 @@ cd /app/EZPZOS.Web && npm install && npm run build
 RUN cp -a /app/EZPZOS.Web/* /app/
 RUN ls -l /app/node_modules
 
+
 # # copy static file into container
 # COPY EZPZOS.Web/dist/ /app/dist/
 
