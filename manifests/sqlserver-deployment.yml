@@ -5,7 +5,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels:  # 修正拼写错误
+    matchLabels:
       app: serversql
   strategy:
     type: Recreate
@@ -15,24 +15,24 @@ spec:
         app: serversql
     spec:
       containers: 
-        - name: sqlserver  # 添加容器名称
-          image: mcr.microsoft.com/mssql/server:2019-latest  # 添加镜像名称
+        - name: sqlserver
+          image: mcr.microsoft.com/mssql/server:2019-latest
           env:
-            - name: SA_PASSWORD  # 修正环境变量格式
+            - name: SA_PASSWORD
               value: dbpassword11
           ports:
-            - containerPort: 1433  # SQL Server 默认端口为 1433 而不是 3306
+            - containerPort: 1433
               name: sqlserver
           volumeMounts:
             - name: sqlserver-persistent-storage
-              mountPath: /var/opt/mssql  # SQL Server 的默认数据路径
+              mountPath: /var/opt/mssql
             - name: usermanagement-dbcreation-script
               mountPath: /docker-entrypoint-initdb.d
 
       volumes:
-        - name: sqlserver-persistent-storage  # 修正卷名称格式
+        - name: sqlserver-persistent-storage
           persistentVolumeClaim:
-            claimName: ebs-sqlserver-pv-claim
-        - name: usermanagement-dbcreation-script  # 修正卷名称格式
+            claimName: ebs-serversql-pv-claim  # 修正为 ebs-serversql-pv-claim
+        - name: usermanagement-dbcreation-script
           configMap:
-            name: usermanagement-dbcreation-script  # 修正 ConfigMap 名称
+            name: usermanagement-dbcreation-script  # 保持 ConfigMap 名称正确
