@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usermgmt-microservice
+  labels: 
+    app: usermgmt-restapp
+spec:
+  replicas: 1  # 指定副本数量
+  selector:
+    matchLabels:
+      app: usermgmt-restapp
+  template:
+    metadata:  # 此处是 metadata，不是 matadata
+      labels:
+        app: usermgmt-restapp
+    spec:
+      containers:
+        - name: usermgmt-restapp
+          image: <your-docker-image>  # 需要指定镜像
+          ports:
+            - containerPort: 8095  # 容器端口前需要有一个空格
